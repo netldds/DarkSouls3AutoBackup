@@ -34,7 +34,7 @@ func main() {
 	userPath := usr.HomeDir
 	// fmt.Println(filepath.FromSlash(userPath))
 	// C:\Users\Administrator\AppData\Roaming
-	gamepath := filepath.Join(userPath, "/AppData/Roaming/DarkSoulsIII/")
+	gamepath := filepath.Join(userPath, "/AppData/Roaming/DarkSoulsIII")
 	gamepath = filepath.FromSlash(gamepath)
 	fmt.Printf("Result of path :%v\n", gamepath)
 
@@ -48,7 +48,7 @@ func main() {
 		return
 	}
 
-	outfile, err := os.Create(`d:/DARK SOULS III.zip`)
+	outfile, err := os.Create("./DARKSOULSIII.zip")
 	checkErr(err)
 
 	w := zip.NewWriter(outfile)
