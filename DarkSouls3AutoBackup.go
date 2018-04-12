@@ -53,7 +53,12 @@ func main() {
 
 	w := zip.NewWriter(outfile)
 
-	addfiles(w, gamepath+"/", "")
+	addfiles(w, gamepath+"\\", "")
+
+	w.Flush()
+
+	w.Close()
+
 	defer outfile.Close()
 
 }
@@ -76,9 +81,9 @@ func addfiles(w *zip.Writer, gamepath, baseInZip string) {
 			_, err = f.Write(dat)
 			checkErr(err)
 		} else if file.IsDir() {
-			newBase := filepath.Join(gamepath, file.Name(), "/")
+			newBase := filepath.Join(gamepath, file.Name(), "\\")
 			fmt.Println("Recursing and Adding Subdir:" + newBase)
-			addfiles(w, newBase, file.Name()+"/")
+			addfiles(w, newBase+"\\", file.Name()+"\\")
 		}
 	}
 }
